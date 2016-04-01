@@ -16,7 +16,7 @@
         font-weight: bold;
       }
       .container-index{
-        margin-right: 10%%;
+        margin-right: 10%;
         margin-left: 5%;
       }
       .text{
@@ -26,14 +26,23 @@
       }
       .log-in{
         float: right;
-        width: 300px;
-        height: 150px;
+        width: 270px;
+        height: 230px;
         margin-top: 7.5%;
       }
       .sign-up{
         float: right;
-        width: 300px;
-        height: 250px;
+        width: 270px;
+        height: 375px;
+      }
+        .sign{
+          float: right;
+          margin-right: 30%;
+        }
+      .log{
+        float: right;
+        margin-right: 30%;
+
       }
     </style>
 
@@ -47,13 +56,78 @@
           Do it in only 140 characters!
         </p>
       </div>
+
       <div class="col-sm-6">
         <div class="log-in panel">
-          Log in
+          <div class="log">
+            <h2>Log in</h2>
+
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password %><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                <% end -%>
+
+                <div class="actions">
+                  <%= f.submit "Log in" %>
+                </div>
+            <% end %>
+
+          </div>
         </div>
+
+
         <div class="sign-up panel">
-          Sign Up
+          <div class="sign">
+          <h2>Sign up</h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <%= f.label :username %><br />
+                <%= f.text_field :username, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" %>
+              </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
         </div>
+
+      </div>
 
       </div>
 
