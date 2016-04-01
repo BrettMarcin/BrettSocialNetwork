@@ -1,0 +1,66 @@
+<% if !user_signed_in? %>
+    <style>
+      body{
+        background: linear-gradient(
+            rgba(0,0,0, 0.1),
+            rgba(0,0,0, 0.1)
+        ),  url("/nature.jpg") no-repeat center center fixed; /* centered and doesn't scroll */
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      h1{
+        color: white;
+        font-weight: bold;
+      }
+      .container-index{
+        margin-right: 10%%;
+        margin-left: 5%;
+      }
+      .text{
+        color: white;
+        font-weight: 300;
+        font-size: 150%;
+      }
+      .log-in{
+        float: right;
+        width: 300px;
+        height: 150px;
+        margin-top: 7.5%;
+      }
+      .sign-up{
+        float: right;
+        width: 300px;
+        height: 250px;
+      }
+    </style>
+
+    <div class="container-index row">
+      <div class="col-sm-6">
+        <h1>Welcome to Brett's Social Network</h1>
+        <p class="text">
+          Connect with your friends. <br>
+          Chat with new friends. <br>
+          Share your adventures. Have fun! <br>
+          Do it in only 140 characters!
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <div class="log-in panel">
+          Log in
+        </div>
+        <div class="sign-up panel">
+          Sign Up
+        </div>
+
+      </div>
+
+    </div>
+
+<% else %>
+
+    <script>document.location = "/home" </script>
+
+<% end %>
