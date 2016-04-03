@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-
   def follow(other)
     active_relationships.create(followed_id: other.id)
   end
@@ -25,3 +24,4 @@ class User < ActiveRecord::Base
     following.include?(other)
   end
 end
+
